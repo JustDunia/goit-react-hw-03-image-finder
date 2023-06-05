@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styles from './Modal.module.css';
+import { PropTypes } from 'prop-types';
 
 export class Modal extends Component {
   handleModalClosing = () => {
@@ -26,3 +27,9 @@ export class Modal extends Component {
     });
   }
 }
+
+Modal.propTypes = {
+  src: PropTypes.string.isRequired,
+  onModalClosing: PropTypes.func.isRequired,
+  tags: PropTypes.string.isRequired,
+};

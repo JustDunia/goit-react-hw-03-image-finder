@@ -4,7 +4,6 @@ import styles from './Loader.module.css';
 
 export class Loader extends Component {
   render() {
-    const isVisible = this.props.isVisible;
     return (
       <div className={styles['loader-wrapper']}>
         <ThreeDots
@@ -13,7 +12,7 @@ export class Loader extends Component {
           radius="9"
           color="#3f51b5"
           ariaLabel="three-dots-loading"
-          visible={isVisible}
+          visible={true}
         />
       </div>
     );

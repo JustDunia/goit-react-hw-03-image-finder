@@ -50,11 +50,12 @@ export class App extends Component {
     );
   };
 
-  loadMoreHandler = () => {
-    this.setState(
+  loadMoreHandler = async () => {
+    await this.setState(
       prevState => ({ page: prevState.page + 1 }),
       this.searchImages
     );
+    window.scrollBy(0, 100);
   };
 
   render() {
@@ -62,11 +63,11 @@ export class App extends Component {
     return (
       <>
         <Searchbar onSearch={this.searchHandler} />
-        <ImageGallery images={images} onLoadMoreImages={this.loadMoreHandler} />
+        <ImageGallery images={images} />
+        {isLoaderVisible && <Loader />}
         {shownHits < totalHits && (
           <Button onLoadMoreImages={this.loadMoreHandler} />
         )}
-        <Loader isVisible={isLoaderVisible} />
       </>
     );
   }

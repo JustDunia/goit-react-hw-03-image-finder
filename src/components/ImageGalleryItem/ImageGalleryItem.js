@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import styles from './ImageGalleryItem.module.css';
 import { Modal } from 'components/Modal/Modal';
+import { PropTypes } from 'prop-types';
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -29,3 +30,9 @@ export class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  smallPic: PropTypes.string.isRequired,
+  bigPic: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+};

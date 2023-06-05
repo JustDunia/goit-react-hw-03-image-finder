@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import styles from './Button.module.css';
+import { PropTypes } from 'prop-types';
 
 export class Button extends Component {
   handleLoadingMoreImages = () => {
@@ -13,3 +14,7 @@ export class Button extends Component {
     );
   }
 }
+
+Button.propTypes = {
+  onLoadMoreImages: PropTypes.func.isRequired,
+};

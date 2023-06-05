@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import styles from './ImageGallery.module.css';
+import { PropTypes } from 'prop-types';
 
 export class ImageGallery extends Component {
   render() {
@@ -23,3 +24,14 @@ export class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      webformatURL: PropTypes.string,
+      largeImageURL: PropTypes.string,
+      tags: PropTypes.string,
+    })
+  ).isRequired,
+};
