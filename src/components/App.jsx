@@ -38,24 +38,17 @@ export class App extends Component {
   };
 
   searchHandler = query => {
-    this.setState(
-      {
-        page: 1,
-        searchPhrase: query.split(' ').join('+'),
-        images: [],
-        totalHits: 0,
-        shownHits: 0,
-      },
-      this.searchImages
-    );
+    this.setState({
+      searchPhrase: query.split(' ').join('+'),
+      page: 1,
+      images: [],
+      totalHits: 0,
+      shownHits: 0,
+    });
   };
 
-  loadMoreHandler = async () => {
-    await this.setState(
-      prevState => ({ page: prevState.page + 1 }),
-      this.searchImages
-    );
-    window.scrollBy(0, 100);
+  loadMoreHandler = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   render() {
@@ -74,5 +67,14 @@ export class App extends Component {
 
   componentDidMount() {
     this.searchHandler('');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.searchPhrase !== this.state.searchPhrase ||
+      prevState.page !== this.state.page
+    ) {
+      this.searchImages();
+    }
   }
 }
